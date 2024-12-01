@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MasterMind2"
         mc:Ignorable="d"
-        Title="MasterMind" Height="450" Width="800">
+        Title="MasterMind" Height="800" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="126*"/>
@@ -28,7 +28,7 @@
 
         <Button x:Name="checkCodeButton" Content="Check code" HorizontalAlignment="Left" Margin="241,198,0,0" VerticalAlignment="Top" FontSize="24" Height="50" Width="318" Click="CheckButton_Click" Background="#FFC00000" BorderBrush="Black" BorderThickness="5,5,5,5" Foreground="White" FontFamily="Tempus Sans ITC" Grid.Row="2"/>
 
-        <StackPanel x:Name="feedbackOverviewPanel" Grid.Row="2" HorizontalAlignment="Left" Margin="340,251,0,10" Width="260" />
+        <StackPanel x:Name="feedbackOverviewPanel" Grid.Row="2" HorizontalAlignment="Left" Margin="332,251,0,10" Width="260" />
 
 
 
@@ -78,7 +78,7 @@
         <Border Name="color4Label" HorizontalAlignment="Left" Height="100" Margin="604,75,0,0" VerticalAlignment="Top" Width="100"  BorderBrush="Black" BorderThickness="2" CornerRadius="50" Grid.Row="2" Grid.ColumnSpan="2">
             <Label Background="Transparent"/>
         </Border>
-        <TextBox x:Name="debugCodeTextBox" HorizontalAlignment="Left" Margin="250,315,0,0" TextWrapping="Wrap" Text="{Binding generatedCode}" VerticalAlignment="Top" Width="300" Height="50" IsReadOnly="True" Visibility="Collapsed" Grid.Row="2" />
+        <TextBox x:Name="debugCodeTextBox" HorizontalAlignment="Left" Margin="250,23,0,0" TextWrapping="Wrap" Text="{Binding generatedCode}" VerticalAlignment="Top"  Width="295" Height="34" IsReadOnly="True"  Grid.Row="2" Background="{x:Null}" Visibility="Collapsed" FontSize="16" FontWeight="Bold" TextAlignment="Center" BorderBrush="#FFB83838" Foreground="#FFCECCCC" />
         <Label x:Name="scoreLabel" Content="Score: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,208,0,0" FontSize="16" Grid.Row="2" />
 
 

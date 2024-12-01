@@ -228,27 +228,26 @@ namespace MasterMind2
 
         private void CheckButton_Click(object sender, RoutedEventArgs e)
         {
-
             if (currentAttempt >= 10)
             {
-                MessageBox.Show($"You failed! De correcte code was: {string.Join(", ", generatedCode)} Nog eens proberen?",
-                                "FAILED",
-                                MessageBoxButton.YesNo,
-                                MessageBoxImage.Question);
+                var failed = MessageBox.Show($"You failed! De correcte code was: {string.Join(", ", generatedCode)} Nog eens proberen?",
+                                 "FAILED",
+                                 MessageBoxButton.YesNo,
+                                 MessageBoxImage.Question);
                 timer.Stop();
-                return;
-            }
-            if (timeLeft <= 0)
-            {
-                MessageBox.Show("tijd is op!",
-                                "Waarschuwing",
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Warning);
-                return;
-            }
-            timer.Stop();
 
-            string guess1 = (color1.SelectedItem as ComboBoxItem)?.Content.ToString() ?? string.Empty;
+                if (failed == MessageBoxResult.Yes)
+                {
+                    ResetGame();
+                }
+                else
+                {
+                    Application.Current.Shutdown();
+                }
+                return;
+            }
+
+                string guess1 = (color1.SelectedItem as ComboBoxItem)?.Content.ToString() ?? string.Empty;
             string guess2 = (color2.SelectedItem as ComboBoxItem)?.Content.ToString() ?? string.Empty;
             string guess3 = (color3.SelectedItem as ComboBoxItem)?.Content.ToString() ?? string.Empty;
             string guess4 = (color4.SelectedItem as ComboBoxItem)?.Content.ToString() ?? string.Empty;
@@ -258,9 +257,55 @@ namespace MasterMind2
             NewTitle();
 
             StartCountDown();
+            CheckForWin();
 
         }
+        private void stopCountDown()
+        {
+            timer.Stop();
+            if (currentAttempt >= 10)
+            {
+                var failed = MessageBox.Show($"You failed! De correcte code was: {string.Join(", ", generatedCode)} Nog eens proberen?",
+                                 "FAILED",
+                                 MessageBoxButton.YesNo,
+                                 MessageBoxImage.Question);
+                timer.Stop();
+               
+                if (failed == MessageBoxResult.Yes)
+                {
+                    ResetGame();
+                }
+                else
+                {
+                    Application.Current.Shutdown();
+                }
+                return;
 
+
+            }
+            currentAttempt++;
+            NewTitle();
+            StartCountDown();
+        }
+        private void ResetGame()
+        {
+            currentAttempt = 0;
+            totalScore = 0;
+            correctPosition = 0;
+            correctColorWrongPosition = 0;
+            incorrectColor = 0;
+            feedbackOverviewPanel.Children.Clear();
+            color1.SelectedItem = null;
+            color2.SelectedItem = null;
+            color3.SelectedItem = null;
+            color4.SelectedItem = null;
+            GenerateRandomCode();
+            NewTitle();
+            StartCountDown();
+            scoreLabel.Content = string.Empty;  
+
+        
+        }
 
 
 
@@ -328,6 +373,26 @@ namespace MasterMind2
         private void UpdateScoreLabel()
         {
             scoreLabel.Content = $"Score: {totalScore} punten";
+        }
+        private void CheckForWin()
+        {
+            if (correctPosition == 4)
+            {
+                timer.Stop();
+                var result = MessageBox.Show($"Code is geraakt in {currentAttempt} pogingen.  Wil je nog eens?",
+                                             "WINNER",
+                                             MessageBoxButton.YesNo,
+                                             MessageBoxImage.Information);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    ResetGame();
+                }
+                else
+                {
+                    Application.Current.Shutdown();
+                }
+            }
         }
 
 
