@@ -25,7 +25,13 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <Button x:Name="checkCodeButton" Content="Check code" HorizontalAlignment="Left" Margin="241,214,0,0" VerticalAlignment="Top" FontSize="24" Height="50" Width="318" Click="CheckButton_Click" Background="#FFC00000" BorderBrush="Black" BorderThickness="5,5,5,5" Foreground="White" FontFamily="Tempus Sans ITC" Grid.Row="2"/>
+
+        <Button x:Name="checkCodeButton" Content="Check code" HorizontalAlignment="Left" Margin="489,225,0,0" VerticalAlignment="Top" FontSize="24" Height="50" Width="200" Click="CheckButton_Click" Background="#FFC00000" BorderBrush="Black" BorderThickness="5,5,5,5" Foreground="White" FontFamily="Tempus Sans ITC" Grid.Row="2" Grid.ColumnSpan="2"/>
+
+        <StackPanel x:Name="feedbackOverviewPanel" Grid.Row="2" HorizontalAlignment="Left" Margin="55,201,0,10" Width="300" />
+
+
+
         <ComboBox  Name="color1" HorizontalAlignment="Left" Margin="80,13,0,0" VerticalAlignment="Top" Width="150" Height="35" SelectionChanged="color1_SelectionChanged" Grid.Row="1" Grid.RowSpan="2">
             <ComboBoxItem Content="Red"></ComboBoxItem>
             <ComboBoxItem Content="Orange"></ComboBoxItem>
@@ -73,10 +79,7 @@
             <Label Background="Transparent"/>
         </Border>
         <TextBox x:Name="debugCodeTextBox" HorizontalAlignment="Left" Margin="250,315,0,0" TextWrapping="Wrap" Text="{Binding generatedCode}" VerticalAlignment="Top" Width="300" Height="50" IsReadOnly="True" Visibility="Collapsed" Grid.Row="2" />
-        <StackPanel Margin="0,0,5,0">
-            <Label Content="Vorige Poging" FontWeight="Bold" />
-            <ListBox x:Name="attemptslist" Height="120" Width="515" />
-        </StackPanel>
+
 
     </Grid>
 </Window>

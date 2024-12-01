@@ -265,14 +265,28 @@ namespace MasterMind2
             string?[] copy = (string?[])generatedCode.Clone();
             ClearBorder();
 
+            StackPanel feedbackRow = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(5) };
 
+            
 
             for (int i = 0; i < guesses.Count; i++)
             {
+                Border chosenColorCircle = new Border
+                {
+                    Width = 20,
+                    Height = 20,
+                    CornerRadius = new CornerRadius(5),
+                    Background = BrushColor(guesses[i] ?? "Transparent"),
+                    BorderThickness = new Thickness(3),
+                    Margin = new Thickness(5)
+                };
+
                 if (guesses[i] == copy[i] && guesses[i] != null && copy[i] != null)
                 {
                     GetLabel(i).BorderBrush = Brushes.DarkRed;
                     GetLabel(i).BorderThickness = new Thickness(2);
+                    chosenColorCircle.BorderBrush = Brushes.DarkRed;
+
                     copy[i] = null;
                     guesses[i] = null;
                 }
@@ -281,12 +295,19 @@ namespace MasterMind2
 
                     GetLabel(i).BorderBrush = Brushes.Wheat;
                     GetLabel(i).BorderThickness = new Thickness(2);
+                    chosenColorCircle.BorderBrush = Brushes.White;
+
 
                 }
+                feedbackRow.Children.Add(chosenColorCircle);
             }
+            feedbackOverviewPanel.Children.Add(feedbackRow);
 
 
         }
+
+
+
 
 
         private Label? GetLabel(int Index)
@@ -310,4 +331,5 @@ namespace MasterMind2
             color4Label.BorderBrush = Brushes.Transparent;
         }
     }
+
 }
