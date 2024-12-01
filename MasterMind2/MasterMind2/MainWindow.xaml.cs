@@ -418,6 +418,26 @@ namespace MasterMind2
             color3Label.BorderBrush = Brushes.Transparent;
             color4Label.BorderBrush = Brushes.Transparent;
         }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            
+            MessageBoxResult result2 = MessageBox.Show(
+                "Wilt u het spel vroegtijdig beeindigen?",
+                $"poging {currentAttempt}/10",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning,
+                MessageBoxResult.No
+            );
+
+            
+            if (result2 == MessageBoxResult.No)
+            {
+                
+                e.Cancel = true;
+            }
+        }
+
     }
 
 }
