@@ -25,6 +25,12 @@ namespace MasterMind2
         private int timeLeft = 60; // Aantal seconden per poging
 
 
+        private int correctPosition = 0;
+        private int correctColorWrongPosition = 0;
+        private int incorrectColor = 0;
+        private int totalScore = 0;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -263,11 +269,15 @@ namespace MasterMind2
             List<string?> guesses = new List<string?> { guess1, guess2, guess3, guess4 };
 
             string?[] copy = (string?[])generatedCode.Clone();
+            correctPosition = 0;
+            correctColorWrongPosition = 0;
+            incorrectColor = 0;
+
             ClearBorder();
 
             StackPanel feedbackRow = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(5) };
 
-            
+
 
             for (int i = 0; i < guesses.Count; i++)
             {
@@ -289,6 +299,7 @@ namespace MasterMind2
 
                     copy[i] = null;
                     guesses[i] = null;
+                    correctPosition++;
                 }
                 else if (guesses[i] != null && copy.Contains(guesses[i]))
                 {
@@ -297,15 +308,27 @@ namespace MasterMind2
                     GetLabel(i).BorderThickness = new Thickness(2);
                     chosenColorCircle.BorderBrush = Brushes.White;
 
+                    correctColorWrongPosition++;
+                    var index = Array.IndexOf(copy, guesses[i]);
+                    copy[index] = null;
 
+
+                }
+                else
+                {
+                    incorrectColor++;
                 }
                 feedbackRow.Children.Add(chosenColorCircle);
             }
+            totalScore += (correctPosition * 0) + (correctColorWrongPosition * -1) + (incorrectColor * -2);
+
             feedbackOverviewPanel.Children.Add(feedbackRow);
-
-
+            UpdateScoreLabel();
         }
-
+        private void UpdateScoreLabel()
+        {
+            scoreLabel.Content = $"Score: {totalScore} punten";
+        }
 
 
 

@@ -26,9 +26,9 @@
         </Grid.Background>
 
 
-        <Button x:Name="checkCodeButton" Content="Check code" HorizontalAlignment="Left" Margin="489,225,0,0" VerticalAlignment="Top" FontSize="24" Height="50" Width="200" Click="CheckButton_Click" Background="#FFC00000" BorderBrush="Black" BorderThickness="5,5,5,5" Foreground="White" FontFamily="Tempus Sans ITC" Grid.Row="2" Grid.ColumnSpan="2"/>
+        <Button x:Name="checkCodeButton" Content="Check code" HorizontalAlignment="Left" Margin="241,198,0,0" VerticalAlignment="Top" FontSize="24" Height="50" Width="318" Click="CheckButton_Click" Background="#FFC00000" BorderBrush="Black" BorderThickness="5,5,5,5" Foreground="White" FontFamily="Tempus Sans ITC" Grid.Row="2"/>
 
-        <StackPanel x:Name="feedbackOverviewPanel" Grid.Row="2" HorizontalAlignment="Left" Margin="55,201,0,10" Width="300" />
+        <StackPanel x:Name="feedbackOverviewPanel" Grid.Row="2" HorizontalAlignment="Left" Margin="340,251,0,10" Width="260" />
 
 
 
@@ -79,6 +79,7 @@
             <Label Background="Transparent"/>
         </Border>
         <TextBox x:Name="debugCodeTextBox" HorizontalAlignment="Left" Margin="250,315,0,0" TextWrapping="Wrap" Text="{Binding generatedCode}" VerticalAlignment="Top" Width="300" Height="50" IsReadOnly="True" Visibility="Collapsed" Grid.Row="2" />
+        <Label x:Name="scoreLabel" Content="Score: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,208,0,0" FontSize="16" Grid.Row="2" />
 
 
     </Grid>
