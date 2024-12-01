@@ -115,7 +115,9 @@ namespace MasterMind2
 
         private void UpdateTitleWithTime()
         {
-            Title = $"MasterMind - Poging {currentAttempt} - Tijd over: {timeLeft} seconden";
+            Title = $"MasterMind - Poging {currentAttempt} ";
+            timerLabel.Content =$"\n Tijd over : \n" +
+                $"{timeLeft} seconden! ";
         }
 
 

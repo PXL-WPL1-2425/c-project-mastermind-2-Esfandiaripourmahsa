@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MasterMind2"
         mc:Ignorable="d"
-        Title="MasterMind" Height="800" Width="800">
-    <Grid>
+        Title="MasterMind" Height="800" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="126*"/>
             <ColumnDefinition Width="27*"/>
@@ -32,7 +32,7 @@
 
 
 
-        <ComboBox  Name="color1" HorizontalAlignment="Left" Margin="80,13,0,0" VerticalAlignment="Top" Width="150" Height="35" SelectionChanged="color1_SelectionChanged" Grid.Row="1" Grid.RowSpan="2">
+        <ComboBox  Name="color1" HorizontalAlignment="Left" Margin="80,13,0,0" VerticalAlignment="Top" Width="150" Height="35" SelectionChanged="color1_SelectionChanged" Grid.Row="1" Grid.RowSpan="2" Background="#FFFEFBFB">
             <ComboBoxItem Content="Red"></ComboBoxItem>
             <ComboBoxItem Content="Orange"></ComboBoxItem>
             <ComboBoxItem Content="Yellow"></ComboBoxItem>
@@ -79,7 +79,8 @@
             <Label Background="Transparent"/>
         </Border>
         <TextBox x:Name="debugCodeTextBox" HorizontalAlignment="Left" Margin="250,23,0,0" TextWrapping="Wrap" Text="{Binding generatedCode}" VerticalAlignment="Top"  Width="295" Height="34" IsReadOnly="True"  Grid.Row="2" Background="{x:Null}" Visibility="Collapsed" FontSize="16" FontWeight="Bold" TextAlignment="Center" BorderBrush="#FFB83838" Foreground="#FFCECCCC" />
-        <Label x:Name="scoreLabel" Content="Score: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,208,0,0" FontSize="16" Grid.Row="2" />
+        <Label x:Name="scoreLabel" Content="Score: "  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,202,0,0" FontSize="22" Grid.Row="2" />
+        <Label Name="timerLabel" FontSize="20" Grid.ColumnSpan="3" Margin="608,168,-10,349" Grid.Row="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
 
 
     </Grid>
